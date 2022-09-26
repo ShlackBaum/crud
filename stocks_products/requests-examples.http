@@ -2,32 +2,10 @@
 
 @baseUrl = http://localhost:8000/api/v1
 
-# создание склада
-POST {{baseUrl}}/stocks/
-Content-Type: application/json
-
-{
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
-  "positions": [
-    {
-      "product": 2,
-      "quantity": 250,
-      "price": 120.50
-    },
-    {
-      "product": 3,
-      "quantity": 100,
-      "price": 180
-    }
-  ]
-}
-
-
 ###
 # обновляем записи на складе
 PATCH {{baseUrl}}/stocks/4/
 Content-Type: application/json
-
 {
   "positions": [
     {
@@ -81,4 +59,23 @@ Content-Type: application/json
 ###
 
 
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
 

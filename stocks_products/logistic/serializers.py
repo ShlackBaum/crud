@@ -29,7 +29,7 @@ class StockSerializer(serializers.ModelSerializer):
 
         for position in positions:
             position['stock'] = stock
-            StockProduct.objects.create(position)
+            StockProduct.objects.create(**position)
         # здесь вам надо заполнить связанные таблицы
         # в нашем случае: таблицу StockProduct
         # с помощью списка positions
@@ -45,6 +45,6 @@ class StockSerializer(serializers.ModelSerializer):
 
         for position in positions:
             position['stock'] = stock
-            StockProduct.objects.create(position)
-
+            product = position['product']
+            StockProduct.objects.update_or_create(defaults={"product": product}, **position)
         return stock
