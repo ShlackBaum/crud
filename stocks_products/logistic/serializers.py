@@ -45,7 +45,11 @@ class StockSerializer(serializers.ModelSerializer):
 
         for position in positions:
             position['stock'] = stock
-            product_model = position['product']
-            product = getattr(product_model, "id")
-            StockProduct.objects.update_or_create(defaults={"product": product}, **position)
+            product = position['product']
+            price = position['price']
+            quantity = position['quantity']
+            stock = position['stock']
+            # price = getattr('stockproduct, "price")
+            # quantity = getattr(product, "quantity")
+            StockProduct.objects.update_or_create(defaults={"price": price, "quantity": quantity}, product=product, stock=stock)
         return stock
